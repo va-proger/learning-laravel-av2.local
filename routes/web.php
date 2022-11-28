@@ -30,3 +30,5 @@ Route::get('/todos',  [PagesController::class, "todosPage"]);
 Route::get('/todos/done',  [PagesController::class, "todosDone"]);
 Route::get('/todos/not-done',  [PagesController::class, "todosNoteDone"]); //
 Route::get('/students',  [PagesController::class, "studentsPage"]); //
+Route::get('/blog',  [PagesController::class, "blogPage"]); //
+Route::get('/blog/{id}',  [PagesController::class, "singlePost"]); //
