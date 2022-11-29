@@ -18,7 +18,17 @@
                     <li class="list-group-item"><span class="fw-bold">Группа №:</span> {{ $student->group_number }} </li> 
                     <li class="list-group-item"><span class="fw-bold">Курс №:</span> {{ $student->group_number }} </li> 
                     <li class="list-group-item"><span class="fw-bold">Специальность:</span> {{ $student->specialty }} </li> 
-                </ul>
+                </ul> 
+                @if (!$student->works->isEmpty())
+                    <div class="">РАБОТА:</div>
+                    <ul>
+                        @foreach ($student->works as $work)
+                            <li>{{ $work->link}}</li>
+                        @endforeach
+                        
+                    </ul>
+                @endif
+                
             </div>
         </div>
     </div>

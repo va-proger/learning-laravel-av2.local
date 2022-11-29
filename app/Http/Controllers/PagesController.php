@@ -13,16 +13,16 @@ class PagesController extends Controller
     public function helloPage()
     {
         return view('hello', [
-            "name" => "Andrey", 
+            "name" => "Andrey",
             "skills" => ["HTML5", "CSS3", "JavaScript", "Python", "PHP", "SCSS", "PUG", "Laravel", "WordPress", "Bitrix", "MODX", "Git"]
         ]);
     }
     public function todosPage()
     {
         /**
-         * 
+         *
          * Create
-         * 
+         *
          */
         // $todo = new Todo();
         // $todo->title = "Дочитать книгу";
@@ -39,24 +39,24 @@ class PagesController extends Controller
         $todo = Todo::find(6);
 
         /**
-         * 
-         * Найти элемент и изминение данных поле 
-         * 
+         *
+         * Найти элемент и изминение данных поле
+         *
          */
         // if($todo){
         //     $todo->status = 1;
-        //     $todo->save(); 
+        //     $todo->save();
         // }
         /**
-         * 
-         *  удаление элемента 
-         * 
+         *
+         *  удаление элемента
+         *
          */
         // $todo->delete();
         /**
-         * 
+         *
          * Получение всех полей
-         * 
+         *
          */
         $todos = Todo::all();
         return view('todos', [
@@ -86,7 +86,7 @@ class PagesController extends Controller
         ]);
     }
     public function blogPage()
-    { 
+    {
         $articles = Article::all();
         return view('blog', [
             "articles" => $articles
@@ -96,9 +96,20 @@ class PagesController extends Controller
         $article = Article::find($id);
         if(!$article ){
             return abort(404);
-        } 
+        }
         return view('blog_single', [
             "article" => $article,
         ]);
+    }
+    public function articleUpdatePage($id){
+        $article = Article::find($id);
+        if(!$article ){
+            return abort(404);
+        }
+        return view('blog_update', ["article" =>$article]);
+    }
+    public function admin()
+    {
+        return view('admin');
     }
 }
